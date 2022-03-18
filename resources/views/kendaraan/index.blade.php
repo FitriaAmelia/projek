@@ -32,7 +32,8 @@ Data Kendaraan
                         </div>
                     @endif --}}
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="kendaraan">
+                            <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Kode Kendaraan</th>
@@ -43,8 +44,9 @@ Data Kendaraan
                                 <th>Deskripsi</th>
                                 <th>Gambar Mobil</th>
                                 <th>Aksi</th>
-
                             </tr>
+                        </thead>
+                        <tbody>
                             @php $no=1; @endphp
                             @foreach($kendaraan as $data)
                             <tr>
@@ -63,13 +65,14 @@ Data Kendaraan
                                     <form action="{{route('kendaraan.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('kendaraan.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('kendaraan.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
-                                        <button type="submit" class="btn btn-outline-danger delete-confirm">Delete</button>
+                                        <a href="{{route('kendaraan.edit',$data->id)}}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
+                                        <a href="{{route('kendaraan.show',$data->id)}}" class="btn btn-outline-warning"><i class="fa fa-search"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger delete-confirm"><i class="fa fa-window-close"></i></button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -77,4 +80,16 @@ Data Kendaraan
         </div>
     </div>
 </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+@endsection
+@section('js')
+    <script src="{{ asset('DataTables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#kendaraan').DataTable();
+        });
+    </script>
 @endsection

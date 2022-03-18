@@ -25,7 +25,7 @@
             </span>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion fas fa-car"></i>
             </div>
             <a href="admin/kendaraan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
@@ -39,7 +39,7 @@
                 <h4>{{ DB::table('supirs')->count() }}</h4>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion fas fa-user"></i>
               </div>
               <a href="{{ route('supir.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -55,7 +55,7 @@
               <h4>{{ DB::table('pelanggans')->count() }}</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="ion fas fa-users"></i>
             </div>
             <a href="admin/pelanggan" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
@@ -85,11 +85,19 @@
               <h4>{{ DB::table('transaksis')->count() }}</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="ion far far-fw fad fa-list-alt"></i>
             </div>
             <a href="admin/transaksi" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+        {{-- <div class="card-body">
+            <p class="card-title">
+                <center>
+                    <img src="assets/img/1.jpg" alt="" style="width:1200px; height:400px" alt="Cover"
+                          class="card-img-top" alt="...">
+                </center>
+            </p>
+        </div> --}}
         <!-- ./col -->
       </div>
       <!-- /.row -->

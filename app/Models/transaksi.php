@@ -9,7 +9,7 @@ use App\Models\pelanggan;
 class transaksi extends Model
 {
     use HasFactory;
-    protected $fillable = ['no_transaksi', 'tgl_pesan', 'tgl_pinjam', 'tgl_rencana', 'pelanggan_id', 'supir_id', 'kendaraan_id', 'total_bayar'];
+    protected $fillable = ['no_transaksi', 'tgl_pesan', 'tgl_pinjam', 'tgl_rencana', 'pelanggan_id', 'supir_id', 'kendaraan_id', 'lama_pakai', 'total_bayar'];
     public $timestamps = true;
 
     public function pelanggans()

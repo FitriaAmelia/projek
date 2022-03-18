@@ -4,6 +4,8 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\SupirController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ReportController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +60,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('supir', SupirController::class)->middleware(['role:admin']);
     Route::resource('kendaraan', KendaraanController::class)->middleware(['role:admin']);
     Route::resource('transaksi', TransaksiController::class)->middleware(['role:admin']);
+    Route::get('report', [ReportController::class, 'transaksi'])->name('getTransaksi');
+    Route::post('report', [ReportController::class, 'reportTransaksi'])->name('reportTransaksi');
+    Route::post('transaksi/export/', [ReportController::class, 'export_excel']);
 
 });
 

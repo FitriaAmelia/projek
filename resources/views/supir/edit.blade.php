@@ -21,6 +21,13 @@
                    <form action="{{route('supir.update',$supir->id)}}" method="post" enctype='multipart/form-data'>
                         @csrf
                         @method('put')
+
+                        <div class="form-group">
+                            <label for="">Foto Supir</label>
+                            <br>
+                            <img src="{{ $supir->image() }}" height="75" style="padding:10px;" />
+                            <input type="file" name="gambar" class="form-control">
+                        </div>
                         <div class="form-group">
                             <label for="">Nama Supir</label>
                             <input type="text" name="nama_supir" value="{{$supir->nama_supir}}" class="form-control @error('nama_supir') is-invalid @enderror">

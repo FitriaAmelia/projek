@@ -52,6 +52,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="">Lama Pemakaian</label>
+                        <input type="text" name="lama_pakai" value="{{$transaksi->lama_pakai}}" class="form-control" readonly>
+                    </div>
+
+                    <div class="form-group">
                         <label for="">Total Bayar</label>
                         <input type="text" name="total_bayar" class="form-control" value="{{$transaksi->total_bayar}}" readonly>
                     </div>

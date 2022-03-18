@@ -18,6 +18,12 @@
             <div class="card">
                 <div class="card-header">Data Supir</div>
                 <div class="card-body">
+
+                    <div class="form-group">
+                        <label for="">Foto Supir</label>
+                        <br>
+                        <img src="{{ $supir->image() }}" style="width:350px; height:350px; padding:10px;" />
+                    </div>
                     <div class="form-group">
                         <label for="">Nama Supir</label>
                         <input type="text" name="nama_supir" value="{{$supir->nama_supir}}" class="form-control" readonly>

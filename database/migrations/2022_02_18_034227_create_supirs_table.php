@@ -15,6 +15,7 @@ class CreateSupirsTable extends Migration
     {
         Schema::create('supirs', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar');
             $table->string('nama_supir');
             $table->string('alamat');
             $table->integer('no_telpon');

@@ -43,7 +43,7 @@ class KendaraanController extends Controller
 
         $rules = [
             'merk' => 'required',
-            'plat_no' => 'required|unique',
+            'plat_no' => 'required',
             'tarif_pinjam' => 'required',
             'status' => 'required',
             'deskripsi' => 'required',
@@ -54,8 +54,6 @@ class KendaraanController extends Controller
         $message = [
             'merk.required' => 'merk mobil harus di isi',
             'plat_no.required' => 'plat nomor mobil harus di isi',
-            'plat_no.unique' => 'plat nomor mobil sudah digunakan',
-            'plat_no.max' => 'no maksimal 255 karakter',
             'tarif_pinjam.required' => 'tarif pinjam mobil harus di isi',
             'status.required' => 'status mobil harus di isi',
             'deskripsi.required' => 'deskripsi mobil harus di isi',

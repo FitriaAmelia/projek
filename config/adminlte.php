@@ -45,8 +45,8 @@ return [
     |
      */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>RENTAL</b>MOBIL',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -247,13 +247,13 @@ return [
         [
             'text' => 'Pelanggan Mobil',
             'url' => 'admin/pelanggan',
-            'icon' => 'fas fa-car',
+            'icon' => 'fas fa-users',
         ],
 
         [
             'text' => 'Driver Mobil ',
             'url' => 'admin/supir',
-            'icon' => 'fas fa-users',
+            'icon' => 'fas fa-user',
         ],
 
         [
@@ -267,6 +267,24 @@ return [
             'url' => 'admin/transaksi',
             'icon' => 'fas fa-money-check-alt',
         ],
+
+        [
+            'text' => 'Laporan',
+            'url'  => 'admin/report',
+            'icon' => 'fas fa-folder-open',
+            'submenu' => [
+                // [
+                //     'text' => 'Laporan Transaksi',
+                //     'url'  => 'admin/laporan',
+                // ],
+                [
+                    'text' => 'Laporan Pesanan',
+                    'url'  => 'admin/report',
+                ],
+            ],
+        ],
+
+
         // [
         //     'text' => 'Penyewa Mobil',
         //     'url' => 'admin/penyewa',

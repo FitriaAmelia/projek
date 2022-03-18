@@ -42,6 +42,7 @@ class SupirController extends Controller
     {
 
         $rules = [
+            'gambar' => 'required|image|max:2048',
             'nama_supir' => 'required',
             'alamat' => 'required',
             'no_telpon' => 'required|numeric',
@@ -50,6 +51,7 @@ class SupirController extends Controller
         ];
 
         $message = [
+            'gambar.image|' => 'gambar harus diisi oleh foto',
             'nama_supir.required' => 'nama supir harus di isi',
             'alamat.required' => 'alamat supir harus di isi',
             'no_telpon.numeric' => 'no telpon harus diisi oleh angka',
@@ -73,6 +75,12 @@ class SupirController extends Controller
         // ]);
 
         $supir = new Supir;
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('images/', $name);
+            $supir->gambar = $name;
+        }
         $supir->nama_supir = $request->nama_supir;
         $supir->alamat = $request->alamat;
         $supir->no_telpon = $request->no_telpon;
@@ -120,6 +128,7 @@ class SupirController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
+            'gambar' => 'required|image|max:2048',
             'nama_supir' => 'required',
             'alamat' => 'required',
             'no_telpon' => 'required|numeric',
@@ -129,6 +138,12 @@ class SupirController extends Controller
         ]);
 
         $supir = Supir::findOrFail($id);
+        if ($request->hasFile('gambar')) {
+            $image = $request->file('gambar');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('images/', $name);
+            $supir->gambar = $name;
+        }
         $supir->nama_supir = $request->nama_supir;
         $supir->alamat = $request->alamat;
         $supir->no_telpon = $request->no_telpon;

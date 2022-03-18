@@ -97,7 +97,18 @@
                                 </span>
                             @enderror
                         </div>
+
                         <div class="form-group">
+                            <label for="">Lama Pemakaian</label>
+                            <input type="text" name="lama_pakai" class="form-control @error('lama_pakai') is-invalid @enderror">
+                             @error('lama_pakai')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        {{-- <div class="form-group">
                         <label for="">Total Bayar</label>
                         <input type="number" name="total_bayar" class="form-control @error('total_bayar') is-invalid @enderror">
                         @error('total_bayar')
@@ -105,7 +116,7 @@
                             <strong>{{$message}}</strong>
                         </span>
                         @enderror
-                    </div>
+                    </div> --}}
                         <div class="form-group">
                             <button type="reset" class="btn btn-outline-warning">Reset</button>
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>

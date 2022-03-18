@@ -28,6 +28,7 @@ class CreateTransaksisTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('kendaraan_id')->references('id')->on('kendaraans')
                 ->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('lama_pakai');
             $table->integer('total_bayar');
 
             $table->timestamps();

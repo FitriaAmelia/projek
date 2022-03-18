@@ -52,7 +52,7 @@ class TransaksiController extends Controller
             'pelanggan_id' => 'required',
             'supir_id' => 'required|numeric',
             'kendaraan_id' => 'required',
-            'total_bayar' => 'required',
+            'lama_pakai' => 'required',
 
 
         ];
@@ -64,7 +64,7 @@ class TransaksiController extends Controller
             'pelanggan_id.required' => 'id pelanggan harus di isi',
             'supir_id.required' => 'id supir harus diisi oleh angka',
             'kendaraan_id.required' => 'id kendaraan harus di isi',
-            'total_bayar.required' => 'tanggal bayar harus di isi',
+            'lama_pakai.required' => 'lama pemakaian harus diisi',
         ];
 
         $validation = Validator::make($request->all(), $rules, $message);
@@ -74,17 +74,18 @@ class TransaksiController extends Controller
         }
 
 
-        // $request->validate([
+        $request->validate([
 
-        //     'tgl_pesan' => 'required',
-        //     'tgl_pinjam' => 'required',
-        //     'tgl_rencana' => 'required',
-        //     'pelanggan_id' => 'required',
-        //     'supir_id' => 'required',
-        //     'kendaraan_id' => 'required',
-        //     'total_bayar' => 'required',
+            'tgl_pesan' => 'required',
+            'tgl_pinjam' => 'required',
+            'tgl_rencana' => 'required',
+            'pelanggan_id' => 'required',
+            'supir_id' => 'required',
+            'kendaraan_id' => 'required',
+            'lama_pakai' => 'required'
 
-        // ]);
+
+        ]);
 
         $transaksi = new Transaksi;
         $transaksi->no_transaksi = mt_rand(1000, 9999);
@@ -94,8 +95,16 @@ class TransaksiController extends Controller
         $transaksi->pelanggan_id = $request->pelanggan_id;
         $transaksi->supir_id = $request->supir_id;
         $transaksi->kendaraan_id = $request->kendaraan_id;
-        $transaksi->total_bayar = $request->total_bayar;
+        $transaksi->lama_pakai = $request->lama_pakai;
+        $kendaraan = Kendaraan::findOrFail($request->kendaraan_id);
+        $supir = Supir::findOrFail($request->supir_id);
+        $transaksi->total_bayar = ($kendaraan->tarif_pinjam + $supir->tarif) * $transaksi->lama_pakai;
+        // $transaksi->total_bayar = $transaksi->kendaraan->tarif_pinjam * $transaksi->jumlah;
 
+        // $kendaraan = Kendaraan::findOrFail($request->kendaraan_id);
+        // $supir = Supir::findOrFail($request->supir_id);
+
+        // $transaksi->total_bayar = $kendaraan->['tarif_pinjam'] + $supir->['tarif'];
         $transaksi->save();
         Alert::success('Good Job', 'Data successfully');
         return redirect()->route('transaksi.index');
@@ -148,6 +157,7 @@ class TransaksiController extends Controller
             'pelanggan_id' => 'required',
             'supir_id' => 'required',
             'kendaraan_id' => 'required',
+            'lama_pakai' => 'required',
             'total_bayar' => 'required',
         ]);
 
@@ -159,6 +169,7 @@ class TransaksiController extends Controller
         $transaksi->pelanggan_id = $request->pelanggan_id;
         $transaksi->supir_id = $request->supir_id;
         $transaksi->kendaraan_id = $request->kendaraan_id;
+        $transaksi->lama_pakai = $request->lama_pakai;
         $transaksi->total_bayar = $request->total_bayar;
 
         $transaksi->save();

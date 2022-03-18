@@ -1,0 +1,11 @@
+1. konsep aplikasi lebih dimantapkan
+2. error handling diperhatikan 
+3. harus pd
+4. algoritma dasar lebih dimantapkan
+
+
+1. transaksi dari rental
+2. validasi ditambahkan
+3. proses laporan transaksi diperhatikan
+4. frontend dibuat
+5. setiap table dicek lagi field nya

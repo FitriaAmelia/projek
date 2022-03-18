@@ -32,9 +32,11 @@ Data Supir
                         </div>
                     @endif --}}
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="supir">
+                            <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Foto Supir</th>
                                 <th>Nama Supir</th>
                                 <th>Alamat Supir</th>
                                 <th>No Telpon</th>
@@ -42,10 +44,13 @@ Data Supir
                                 <th>Tarif Per Hari</th>
                                 <th>Aksi</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             @php $no=1; @endphp
                             @foreach($supir as $data)
                             <tr>
                                 <td>{{$no++}}</td>
+                                <td><img src="{{$data->image()}}" alt="" style="width:160px; height:100px;" alt="gambar"></td>
                                 <td>{{$data->nama_supir}}</td>
                                 <td>{{$data->alamat}}</td>
                                 <td>0{{$data->no_telpon}}</td>
@@ -55,13 +60,14 @@ Data Supir
                                     <form action="{{route('supir.destroy',$data->id)}}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="{{route('supir.edit',$data->id)}}" class="btn btn-outline-info">Edit</a>
-                                        <a href="{{route('supir.show',$data->id)}}" class="btn btn-outline-warning">Show</a>
-                                        <button type="submit" class="btn btn-outline-danger delete-confirm">Delete</button>
+                                        <a href="{{route('supir.edit',$data->id)}}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
+                                        <a href="{{route('supir.show',$data->id)}}" class="btn btn-outline-warning"><i class="fa fa-search"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger delete-confirm"><i class="fa fa-window-close"></i></button>
                                     </form>
                                 </td>
                             </tr>
                             @endforeach
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -69,4 +75,16 @@ Data Supir
         </div>
     </div>
 </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+@endsection
+@section('js')
+    <script src="{{ asset('DataTables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#supir').DataTable();
+        });
+    </script>
 @endsection
