@@ -263,8 +263,14 @@ return [
         ],
 
         [
-            'text' => 'Transaksi',
+            'text' => 'Peminjaman',
             'url' => 'admin/transaksi',
+            'icon' => 'fas fa-money-check-alt',
+        ],
+
+        [
+            'text' => 'Pengembalian',
+            'url' => 'admin/pengembalian',
             'icon' => 'fas fa-money-check-alt',
         ],
 

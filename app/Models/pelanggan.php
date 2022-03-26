@@ -12,6 +12,12 @@ class pelanggan extends Model
     protected $fillable = ['no_ktp', 'nama', 'alamat', 'telpon'];
     public $timestamps = true;
 
+
+    public function pengembalians()
+    {
+        $this->hasMany('App\Models\pengembalian', 'pelanggan_id');
+    }
+
     public function transaksis()
     {
         $this->hasMany('App\Models\transaksi', 'pelanggan_id');

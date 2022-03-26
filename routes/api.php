@@ -19,6 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// route API
 Route::resource('penyewa', PenyewaController::class);
 Route::resource('users', UserController::class);

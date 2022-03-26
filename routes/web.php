@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PengembalianController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\SupirController;
@@ -63,6 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('report', [ReportController::class, 'transaksi'])->name('getTransaksi');
     Route::post('report', [ReportController::class, 'reportTransaksi'])->name('reportTransaksi');
     Route::post('transaksi/export/', [ReportController::class, 'export_excel']);
+    Route::resource('pengembalian', PengembalianController::class)->middleware(['role:admin']);
 
 });
 

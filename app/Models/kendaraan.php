@@ -29,6 +29,11 @@ class kendaraan extends Model
 
     }
 
+    public function pengembalians()
+    {
+        $this->hasMany('App\Models\pengembalian', 'kendaraan_id');
+    }
+
     public function transaksi()
     {
         $this->hasMany('App\Models\transaksi', 'kendaraan_id');
